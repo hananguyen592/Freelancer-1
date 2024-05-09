@@ -42,7 +42,8 @@ img {
   position: fixed;
   z-index: 9;
   width: 100%;
-  /* transition: height 0.3s ease-in-out; */
+  height: 104px;
+  transition: height 0.3s ease-in-out;
 }
 
 .navbar.minimized {
@@ -100,7 +101,7 @@ img {
 .banner {
   background-color: rgb(26, 188, 156);
   color: rgb(255, 255, 255);
-  padding-top: 96px;
+  padding-top: 200px;
   padding-bottom: 96px;
   text-align: center;
   flex-direction: column;
@@ -236,10 +237,14 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  /* overflow-y: auto; */
+  overflow: auto;
 
   outline: 0;
   background-color: rgba(0, 0, 0, 0.25);
+}
+
+.fixed-body {
+  overflow: hidden;
 }
 
 .modal-body {
@@ -249,8 +254,8 @@ img {
   transform: translate(-50%, -50%);
   width: 1140px;
   max-height: 120%;
-  margin-top: 50px;
-  margin-bottom: 30px;
+  margin-top: 45px;
+  margin-bottom: 10px;
 
   padding: 96px 214px 48px 214px;
   display: flex;
@@ -545,6 +550,9 @@ img {
   padding: 0 12px;
 
   color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
@@ -557,16 +565,21 @@ img {
   margin-bottom: 24px;
 }
 
-.footer-item .detail {
+.footer-item .address {
   font-size: 20px;
   line-height: 30px;
   color: rgb(255, 255, 255);
+  max-width: 250px;
 }
 
 .social-network-icon {
   font-size: 40px;
   font-weight: 400;
   line-height: 30px;
+}
+
+.about-freelancer .info {
+  max-width: 400px;
 }
 
 .about-freelancer a {
@@ -591,4 +604,10 @@ img {
   line-height: 24px;
   color: rgb(255, 255, 255);
 }
-/* END  */
+
+/* active section */
+.active-section-link {
+  color: #fff;
+  background: #1abc9c;
+  border-radius: 8px;
+}
