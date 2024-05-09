@@ -1,0 +1,594 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.navbar {
+  background-color: rgb(44, 62, 80);
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 303.5px;
+  padding-right: 303.5px;
+  justify-content: space-between;
+  font-weight: 700;
+
+  position: fixed;
+  z-index: 9;
+  width: 100%;
+  /* transition: height 0.3s ease-in-out; */
+}
+
+.navbar.minimized {
+  height: 72px;
+}
+
+.navbar .heading {
+  font-size: 28px;
+  line-height: 42px;
+  color: rgb(255, 255, 255);
+  /* tại sao set color ở .navbar ở trên lại ko ăn ở heading này? */
+  cursor: pointer;
+}
+
+.navbar .menu {
+  display: flex;
+
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(255, 255, 255);
+}
+
+.navbar .menu .menu-item {
+  padding: 16px;
+}
+
+.navbar .menu .menu-item:hover {
+  color: #1abc9c;
+  cursor: pointer;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.divider i {
+  font-size: 2rem;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.divider .divider-line {
+  width: 100%;
+  max-width: 100px;
+  height: 0.25rem;
+  border-radius: 1rem;
+}
+
+.banner {
+  background-color: rgb(26, 188, 156);
+  color: rgb(255, 255, 255);
+  padding-top: 96px;
+  padding-bottom: 96px;
+  text-align: center;
+  flex-direction: column;
+}
+
+.banner-image {
+  width: 240px;
+  margin: auto;
+  margin-bottom: 48px;
+}
+
+.banner .heading {
+  color: rgb(255, 255, 255);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+.banner .divider i {
+  color: rgb(255, 255, 255);
+}
+
+.banner .divider .divider-line {
+  background-color: rgb(255, 255, 255);
+}
+
+.banner .desc {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+}
+
+.portfolio {
+  width: 100%;
+  max-width: 1320px;
+  margin: auto;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.heading {
+  text-align: center;
+  color: rgb(44, 62, 80);
+}
+
+.heading h2 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.portfolio .divider i {
+  color: rgb(44, 62, 80);
+}
+
+.portfolio .divider .divider-line {
+  background-color: rgb(44, 62, 80);
+}
+
+/* STYLE PORTFOLIO SECTION */
+
+.portfolio .portfolio-list {
+  display: flex;
+  flex-wrap: wrap;
+  height: 625.75px;
+}
+
+.portfolio .portfolio-list .portfolio-item {
+  width: calc(100% / 3);
+  padding: 0 20px;
+  margin-top: 0px;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.portfolio .portfolio-list .portfolio-item .portfolio-detail-btn {
+  position: absolute;
+  background-color: rgba(26, 188, 156, 0.9);
+  opacity: 0;
+  top: 0;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+}
+
+.portfolio .portfolio-list .portfolio-item .portfolio-detail-btn i {
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 108px;
+  color: rgb(255, 255, 255);
+}
+
+.portfolio .portfolio-list .portfolio-item:hover .portfolio-detail-btn {
+  opacity: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .portfolio {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 40px;
+  }
+
+  .portfolio .portfolio-list .portfolio-item {
+    width: calc(100% / 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio {
+    width: 100%;
+    margin: 0 20px;
+  }
+
+  .portfolio .portfolio-list .portfolio-item {
+    width: 100%;
+  }
+}
+
+/* phần portfolio click mở ra modal */
+
+.portfolio-modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* overflow-y: auto; */
+
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.modal-body {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1140px;
+  max-height: 120%;
+  margin-top: 50px;
+  margin-bottom: 30px;
+
+  padding: 96px 214px 48px 214px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.176);
+  border-radius: 8px;
+}
+
+/* .modal-backdrop {
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 1200px;
+  background-color: rgba(0, 0, 0, 0.25);
+} */
+
+.portfolio-modal .modal-body .btn-x {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+
+  font-size: 32px;
+  line-height: 32px;
+  color: gray;
+}
+
+.portfolio-modal .modal-body .btn-x:hover {
+  color: #000;
+  cursor: pointer;
+}
+
+.portfolio-modal .modal-body .divider i {
+  color: rgb(44, 62, 80);
+}
+
+.portfolio-modal .modal-body .divider .divider-line {
+  background-color: rgb(44, 62, 80);
+}
+
+.portfolio-modal .modal-body .portfolio-image {
+  margin-bottom: 48px;
+}
+
+.portfolio-modal .modal-body .desc {
+  margin-bottom: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.portfolio-modal .modal-body .btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgb(26, 188, 156);
+  border-radius: 8px;
+  color: rgb(255, 255, 255);
+
+  font-weight: 400;
+  line-height: 24px;
+
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  border: 2px solid rgb(26, 188, 156);
+}
+
+.portfolio-modal .modal-body .btn-primary:hover {
+  background-color: #16a085;
+  border-color: #15967d;
+  cursor: pointer;
+}
+
+.portfolio-modal .modal-body .btn-primary i {
+  font-size: 16px;
+  line-height: 16px;
+
+  margin-right: 8px;
+  margin-left: 4px;
+  margin-top: 2px;
+}
+
+.portfolio-modal .modal-body .btn-primary .btn-close {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* phần about */
+
+.about {
+  background-color: rgb(26, 188, 156);
+  color: rgb(255, 255, 255);
+  flex-direction: column;
+  text-align: center;
+
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.about .heading {
+  color: rgb(255, 255, 255);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.about .divider i {
+  color: rgb(255, 255, 255);
+}
+
+.about .divider .divider-line {
+  background-color: rgb(255, 255, 255);
+}
+
+.about .desc {
+  padding-left: 511.5px;
+  padding-right: 511.5px;
+  display: flex;
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+
+  margin-bottom: 40px;
+}
+
+.about .desc .desc-item {
+  width: 416px;
+
+  margin-left: 12px;
+  margin-right: 12px;
+
+  display: flex;
+  flex-wrap: wraps;
+  text-align: start;
+}
+
+.about .btn-download {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 28px;
+  padding-right: 28px;
+
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 8px;
+
+  width: 232.5px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.about .btn-download i {
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.about .btn-download .btn-download-text {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.about .btn-download:hover {
+  color: #000;
+  background-color: #f8f9fa;
+}
+
+/* phần contact  */
+.contact {
+  background-color: rgb(255, 255, 255);
+  flex-direction: column;
+  text-align: center;
+
+  padding-top: 96px;
+  padding-bottom: 96px;
+  padding-left: 578.5px;
+  padding-right: 578.5px;
+}
+
+.contact .heading {
+  color: rgb(44, 62, 80);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.contact .divider i {
+  color: rgb(44, 62, 80);
+}
+
+.contact .divider .divider-line {
+  background-color: rgb(44, 62, 80);
+}
+
+.contact .contact-field {
+  width: 746px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact .contact-field .label-item {
+  color: #6c757d;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 24px;
+}
+
+.contact .contact-field .textbox {
+  border: none;
+  border-bottom: 1px solid rgb(206, 212, 218);
+  outline: none;
+
+  display: flex;
+  justify-content: flex-start;
+  height: 24px;
+  margin-bottom: 16px;
+}
+
+.contact .contact-field .field-message {
+  height: 96px;
+}
+
+.contact .contact-field .error-message {
+  display: none;
+  text-align: start;
+  color: rgb(220, 53, 69);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  margin-bottom: 10px;
+}
+
+.contact .contact-field .error-message.show {
+  display: flex;
+}
+
+/* .textbox.error {
+  border-bottom: 1px solid rgb(220, 53, 69);
+} */
+
+.contact .contact-field .btn-send {
+  background-color: rgb(26, 188, 156);
+  color: #f8f9fa;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 28px;
+  padding-right: 28px;
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+
+  border: 2px solid rgb(26, 188, 156);
+  border-radius: 8px;
+  width: 103.4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+/* phần footer */
+.footer {
+  display: flex;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-left: 291.5px;
+  padding-right: 291.5px;
+
+  background-color: rgb(44, 62, 80);
+}
+
+.footer-item {
+  width: calc(100% / 3);
+  padding: 0 12px;
+
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.footer-item .heading {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.8px;
+  color: rgb(255, 255, 255);
+
+  margin-bottom: 24px;
+}
+
+.footer-item .detail {
+  font-size: 20px;
+  line-height: 30px;
+  color: rgb(255, 255, 255);
+}
+
+.social-network-icon {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.about-freelancer a {
+  font-size: 20px;
+  line-height: 30px;
+  color: rgb(26, 188, 156);
+  text-decoration: underline;
+}
+.about-freelancer a:hover {
+  color: #15967d;
+}
+
+/* phần copyright  */
+.copyright {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  text-align: center;
+  background-color: rgb(26, 37, 47);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgb(255, 255, 255);
+}
+/* END  */
