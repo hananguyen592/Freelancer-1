@@ -81,49 +81,133 @@ modalBody.addEventListener("click", function (event) {
 });
 
 // phần contact input - validate required field
+document.addEventListener("DOMContentLoaded", function () {
+  var inputName = document.getElementById("inputName");
+  var validateErrorName = document.getElementById("nameError");
+  var labelName = document.getElementById("nameLabel");
+  var warningIconName = document.querySelector(".warning-icon-name");
 
-var inputName = document.getElementById("inputName");
-var validateErrorName = document.getElementById("nameError");
+  inputName.addEventListener("focus", function () {
+    labelName.style.fontSize = "16px";
+    // labelName.classList.add("focus");
+    inputName.classList.add("focus");
+    inputName.classList.remove("error");
+    warningIconName.style.display = "none";
+    validateErrorName.style.display = "none";
+  });
 
-inputName.addEventListener("blur", function () {
-  if (this.value.trim() === "") {
-    validateErrorName.classList.add("show");
-  } else {
-    validateErrorName.classList.remove("show");
-  }
+  inputName.addEventListener("blur", function () {
+    if (inputName.value.trim() === "") {
+      inputName.classList.add("error");
+      warningIconName.style.display = "inline";
+      validateErrorName.style.display = "block";
+      labelName.style.fontSize = "24px";
+    }
+  });
+
+  inputName.addEventListener("input", function () {
+    if (inputName.value.trim() !== "") {
+      inputName.classList.remove("error");
+      warningIconName.style.display = "none";
+      validateErrorName.style.display = "none";
+    }
+  });
 });
 
-var inputEmail = document.getElementById("inputEmail");
-var validateErrorEmail = document.getElementById("emailError");
+document.addEventListener("DOMContentLoaded", function () {
+  var inputEmail = document.getElementById("inputEmail");
+  var validateErrorEmail = document.getElementById("emailError");
+  var labelEmail = document.getElementById("emailLabel");
+  var warningIconEmail = document.querySelector(".warning-icon-email");
 
-inputEmail.addEventListener("blur", function () {
-  if (this.value.trim() === "") {
-    validateErrorEmail.classList.add("show");
-  } else {
-    validateErrorEmail.classList.remove("show");
-  }
+  inputEmail.addEventListener("focus", function () {
+    labelEmail.style.fontSize = "16px";
+    inputEmail.classList.add("focus");
+    inputEmail.classList.remove("error");
+    warningIconEmail.style.display = "none";
+    validateErrorEmail.style.display = "none";
+  });
+
+  inputEmail.addEventListener("blur", function () {
+    if (inputEmail.value.trim() === "") {
+      inputEmail.classList.add("error");
+      warningIconEmail.style.display = "inline";
+      validateErrorEmail.style.display = "block";
+      labelEmail.style.fontSize = "24px";
+    }
+  });
+
+  inputEmail.addEventListener("input", function () {
+    if (inputEmail.value.trim() !== "") {
+      inputEmail.classList.remove("error");
+      warningIconEmail.style.display = "none";
+      validateErrorEmail.style.display = "none";
+    }
+  });
 });
 
-var inputPhone = document.getElementById("inputPhone");
-var validateErrorPhone = document.getElementById("phoneError");
+document.addEventListener("DOMContentLoaded", function () {
+  var inputPhone = document.getElementById("inputPhone");
+  var validateErrorPhone = document.getElementById("phoneError");
+  var labelPhone = document.getElementById("phoneLabel");
+  var warningIconPhone = document.querySelector(".warning-icon-phone");
 
-inputPhone.addEventListener("blur", function () {
-  if (this.value.trim() === "") {
-    validateErrorPhone.classList.add("show");
-  } else {
-    validateErrorPhone.classList.remove("show");
-  }
+  inputPhone.addEventListener("focus", function () {
+    labelPhone.style.fontSize = "16px";
+    inputPhone.classList.add("focus");
+    inputPhone.classList.remove("error");
+    warningIconPhone.style.display = "none";
+    validateErrorPhone.style.display = "none";
+  });
+
+  inputPhone.addEventListener("blur", function () {
+    if (inputPhone.value.trim() === "") {
+      inputPhone.classList.add("error");
+      warningIconPhone.style.display = "inline";
+      validateErrorPhone.style.display = "block";
+      labelPhone.style.fontSize = "24px";
+    }
+  });
+
+  inputPhone.addEventListener("input", function () {
+    if (inputPhone.value.trim() !== "") {
+      inputPhone.classList.remove("error");
+      warningIconPhone.style.display = "none";
+      validateErrorPhone.style.display = "none";
+    }
+  });
 });
 
-var inputMessage = document.getElementById("inputMessage");
-var validateErrorMessage = document.getElementById("messageError");
+document.addEventListener("DOMContentLoaded", function () {
+  var inputMessage = document.getElementById("inputMessage");
+  var validateErrorMessage = document.getElementById("messageError");
+  var labelMessage = document.getElementById("messageLabel");
+  var warningIconMessage = document.querySelector(".warning-icon-message");
 
-inputMessage.addEventListener("blur", function () {
-  if (this.value.trim() === "") {
-    validateErrorMessage.classList.add("show");
-  } else {
-    validateErrorMessage.classList.remove("show");
-  }
+  inputMessage.addEventListener("focus", function () {
+    labelMessage.style.fontSize = "16px";
+    inputMessage.classList.add("focus");
+    inputMessage.classList.remove("error");
+    warningIconMessage.style.display = "none";
+    validateErrorMessage.style.display = "none";
+  });
+
+  inputMessage.addEventListener("blur", function () {
+    if (inputMessage.value.trim() === "") {
+      inputMessage.classList.add("error");
+      warningIconMessage.style.display = "inline";
+      validateErrorMessage.style.display = "block";
+      labelMessage.style.fontSize = "24px";
+    }
+  });
+
+  inputMessage.addEventListener("input", function () {
+    if (inputMessage.value.trim() !== "") {
+      inputMessage.classList.remove("error");
+      warningIconMessage.style.display = "none";
+      validateErrorMessage.style.display = "none";
+    }
+  });
 });
 
 // phần cố định vị trí của header khi scroll page + khi bắt đầu scroll thì height của header thu nhỏ lại
@@ -138,7 +222,7 @@ window.addEventListener("scroll", function () {
   }
 });
 
-// phần button Download - thử dùng code này xem chạy không chứ cũng chưa phân tích để hiểu kĩ lắm =)))
+// handle phần button Download - thử dùng code này xem chạy không chứ cũng chưa phân tích để hiểu kĩ lắm =)))
 var downloadFile = document.getElementById("downloadButton");
 
 downloadFile.addEventListener("click", function () {
@@ -169,7 +253,7 @@ var aboutMenuItem = document.querySelector(".about-link");
 var contactMenuItem = document.querySelector(".contact-link");
 window.addEventListener("scroll", function () {
   console.log(window.pageYOffset, "scroll");
-  if (window.pageYOffset > 450 && window.pageYOffset < 900) {
+  if (window.pageYOffset >= 0 && window.pageYOffset < 900) {
     portfolioMenuItem.classList.add("active-section-link");
     aboutMenuItem.classList.remove("active-section-link");
     contactMenuItem.classList.remove("active-section-link");

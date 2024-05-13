@@ -189,44 +189,66 @@
         <div class="divider-line divider-end"></div>
       </div>
       <form id="inputForm" class="contact-field">
-        <label for="name" class="label-item">Full name</label>
-        <input type="text" class="textbox field-name" id="inputName" required />
-        <label id="nameError" class="error-message">A name is required.</label>
+        <div class="form-item">
+          <label for="name" class="label-item" id="nameLabel">Full name</label>
+          <i class="fa-solid fa-circle-exclamation warning-icon-name"></i>
+          <input
+            type="text"
+            class="textbox field-name"
+            id="inputName"
+            required
+          />
+          <div id="nameError" class="error-message">A name is required.</div>
+        </div>
 
-        <label for="email" class="label-item">Email address</label>
-        <input
-          type="email"
-          class="textbox field-email"
-          id="inputEmail"
-          required
-        />
-        <label id="emailError" class="error-message"
-          >An email is required.</label
-        >
+        <div class="form-item">
+          <label for="email" class="label-item" id="emailLabel"
+            >Email address</label
+          >
+          <i class="fa-solid fa-circle-exclamation warning-icon-email"></i>
+          <input
+            type="email"
+            class="textbox field-email"
+            id="inputEmail"
+            required
+          />
+          <div id="emailError" class="error-message">An email is required.</div>
+          <div id="emailInvalid" class="email-invalid">Email is not valid</div>
+        </div>
 
-        <label for="phone" class="label-item">Phone number</label>
-        <input
-          type="number"
-          class="textbox field-phone"
-          id="inputPhone"
-          required
-        />
-        <label id="phoneError" class="error-message">
-          A phone number is required.
-        </label>
+        <div class="form-item">
+          <label for="phone" class="label-item" id="phoneLabel"
+            >Phone number</label
+          >
+          <i class="fa-solid fa-circle-exclamation warning-icon-phone"></i>
+          <input
+            type="number"
+            class="textbox field-phone"
+            id="inputPhone"
+            required
+          />
+          <div id="phoneError" class="error-message">
+            A phone number is required.
+          </div>
+        </div>
 
-        <label for="message" class="label-item">Message</label>
-        <input
-          type="text"
-          class="textbox field-message"
-          id="inputMessage"
-          required
-        />
-        <label id="messageError" class="error-message">
-          A message is required.
-        </label>
+        <div class="form-item">
+          <label for="message" class="label-item" id="messageLabel"
+            >Message</label
+          >
+          <i class="fa-solid fa-circle-exclamation warning-icon-message"></i>
+          <input
+            type="text"
+            class="textbox field-message"
+            id="inputMessage"
+            required
+          />
+          <div id="messageError" class="error-message">
+            A message is required.
+          </div>
+        </div>
 
-        <div class="btn-send">Send</div>
+        <div id="sendButton" class="btn-send">Send</div>
       </form>
     </section>
     <!-- phần footer  -->
